@@ -71,3 +71,32 @@ function getWeekDay(date) {
 	const newDate = date instanceof Date ? date : new Date(+date);
 	return weekDays[newDate.getDay()];
 }
+
+export function binarySearch(arr, target, returnIndex = false, comprator) {
+	if (typeof comprator !== 'function')
+		comprator = (a, b) => {
+			if (a === b) return 1;
+			if (a < b) return -1;
+		};
+	let [start, end] = [0, arr.length - 1];
+	while (start <= end) {
+		const mid = Math.trunc((start + end) / 2);
+		const res = comprator(target, arr[mid]);
+		if (res > 0) return returnIndex ? mid : arr[mid];
+		if (res < 0) end = mid - 1;
+		else start = mid + 1;
+	}
+	if (returnIndex) return -1;
+}
+
+export function insertionSort(arr, comprator) {
+	if (typeof comprator !== 'function') comprator = (a, b) => (a > b ? 1 : -1);
+	for (let i = 0; i < arr.length; i++) {
+		const cur = arr[i];
+		for (var j = i - 1; j >= 0 && comprator(arr[j], cur) > 0; j--) {
+			arr[j + 1] = arr[j];
+		}
+		arr[j + 1] = cur;
+	}
+	return arr;
+}
