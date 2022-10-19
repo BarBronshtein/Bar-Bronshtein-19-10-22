@@ -3,11 +3,13 @@ import axios from 'axios';
 export const weatherService = {
 	cityAutoComplete,
 	curWeather,
+	fiveDayWeatherForecast,
 };
 const CACHE_KEY = 'cache';
 const cache = JSON.parse(localStorage.getItem(CACHE_KEY || 'null')) || {
 	locations: {},
 	curWeather: {},
+	fiveDayWeatherForecast: {},
 };
 const API_KEY = process.env.REACT_APP_ACUWEATHER_API_KEY;
 
@@ -32,11 +34,11 @@ async function cityAutoComplete(txt) {
 		throw new Error('Failed to get data please try again later');
 	}
 }
-async function curWeather(key) {
+async function curWeather(cityKey) {
 	const cacheKey = 'curWeather';
 	const baseUrl = 'http://dataservice.accuweather.com/currentconditions/v1/';
-	const query = key + '?apikey=' + API_KEY;
-	if (cache[cacheKey][key]) return cache[cacheKey][key];
+	const query = cityKey + '?apikey=' + API_KEY;
+	if (cache[cacheKey][cityKey]) return cache[cacheKey][cityKey];
 	try {
 		const { data } = await axios.get(baseUrl + query);
 		const curCondition = {
@@ -48,7 +50,7 @@ async function curWeather(key) {
 			},
 		};
 
-		cache[cacheKey][key] = curCondition;
+		cache[cacheKey][cityKey] = curCondition;
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
 		return curCondition;
 	} catch (err) {
@@ -56,4 +58,17 @@ async function curWeather(key) {
 		throw new Error('Failed to get data please try again later');
 	}
 }
+async function fiveDayWeatherForecast(cityKey) {
+	const cacheKey = 'fiveDayWeatherForecast';
+	const baseUrl = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/';
+	const query = cityKey + '?apikey=' + API_KEY;
+	try {
+		const { data } = await axios.get(baseUrl + query);
+		console.log(data);
+	} catch (err) {
+		console.log(err);
+		throw new Error('Failed to get data please try again later');
+	}
+}
+
 window.weatherService = weatherService;
