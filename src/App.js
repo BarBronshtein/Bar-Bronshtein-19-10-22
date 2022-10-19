@@ -1,3 +1,4 @@
+import { weatherService } from './services/weather.service';
 function App() {
 	return (
 		<div className="App">
