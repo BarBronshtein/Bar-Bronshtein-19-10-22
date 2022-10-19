@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { utilService } from './util.service';
 
 export const weatherService = {
 	cityAutoComplete,
@@ -41,15 +42,22 @@ async function curWeather(cityKey) {
 	if (cache[cacheKey][cityKey]) return cache[cacheKey][cityKey];
 	try {
 		const { data } = await axios.get(baseUrl + query);
+		const {
+			WeatherText,
+			WeatherIcon,
+			Temperature: {
+				Metric: { Value: celsiusValue },
+				Imperial: { Value: farenheitValue },
+			},
+		} = data[0];
 		const curCondition = {
-			text: data[0].WeatherText,
-			icon: data[0].WeatherIcon,
+			text: WeatherText,
+			icon: WeatherIcon,
 			temperature: {
-				c: data[0].Temperature.Metric.Value,
-				f: data[0].Temperature.Imperial.Value,
+				c: celsiusValue,
+				f: farenheitValue,
 			},
 		};
-
 		cache[cacheKey][cityKey] = curCondition;
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
 		return curCondition;
@@ -62,9 +70,43 @@ async function fiveDayWeatherForecast(cityKey) {
 	const cacheKey = 'fiveDayWeatherForecast';
 	const baseUrl = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/';
 	const query = cityKey + '?apikey=' + API_KEY;
+	if (cache[cacheKey][cityKey]) return cache[cacheKey][cityKey];
 	try {
 		const { data } = await axios.get(baseUrl + query);
-		console.log(data);
+		const dailyFrecasts = data.DailyForecasts.map(
+			({ Day, Date: localDate, Night, Temperature }) => ({
+				date: localDate.slice(0, 10),
+				weekDay: utilService.getWeekDay(localDate),
+				day: {
+					text: Day.IconPhrase,
+					icon: Day.Icon,
+					precipitation: Day.HasPrecipitation
+						? Day.Precipitationintensity + Day.PrecipitationType
+						: '',
+				},
+				night: {
+					text: Night.IconPhrase,
+					icon: Night.Icon,
+					precipitation: Night.HasPrecipitation
+						? Night.Precipitationintensity + Night.PrecipitationType
+						: '',
+				},
+				temperature: {
+					c: {
+						min: utilService.fToC(Temperature.Minimum.Value),
+						max: utilService.fToC(Temperature.Maximum.Value),
+					},
+					f: {
+						min: Temperature.Minimum.Value,
+						max: Temperature.Maximum.Value,
+					},
+				},
+			})
+		);
+
+		cache[cacheKey][cityKey] = dailyFrecasts;
+		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+		return dailyFrecasts;
 	} catch (err) {
 		console.log(err);
 		throw new Error('Failed to get data please try again later');

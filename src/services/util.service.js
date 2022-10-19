@@ -4,6 +4,7 @@ export const utilService = {
 	debounce,
 	timeAgo,
 	makeId,
+	getWeekDay,
 };
 function cToF(celsius) {
 	return (celsius * 9) / 5 + 32;
@@ -63,4 +64,10 @@ function makeId(length = 5) {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
 	return text;
+}
+
+function getWeekDay(date) {
+	const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'sat'];
+	const newDate = date instanceof Date ? date : new Date(+date);
+	return weekDays[newDate.getDay()];
 }
