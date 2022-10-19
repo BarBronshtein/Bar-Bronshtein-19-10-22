@@ -3,6 +3,7 @@ export const utilService = {
 	fToC,
 	debounce,
 	timeAgo,
+	makeId,
 };
 function cToF(celsius) {
 	return (celsius * 9) / 5 + 32;
@@ -52,4 +53,14 @@ function timeAgo(input) {
 			return time; //? time : 'Just now'
 		}
 	}
+}
+
+function makeId(length = 5) {
+	var text = '';
+	var possible =
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	for (var i = 0; i < length; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return text;
 }
