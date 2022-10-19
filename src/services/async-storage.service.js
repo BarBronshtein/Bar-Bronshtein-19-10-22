@@ -18,7 +18,6 @@ async function query(entityType, delay = 0) {
 
 async function get(entityType, entityId) {
 	const entities = await query(entityType);
-	// const entity = entities.find(entity => entity.id === entityId);
 	const entity = binarySearch(entities, entityId, false, (target, entity) => {
 		if (target === entity.id) return 1;
 		if (target < entity.id) return -1;
