@@ -5,6 +5,7 @@ export const weatherService = {
 	cityAutoComplete,
 	curWeather,
 	fiveDayWeatherForecast,
+	getCurLoc,
 };
 const CACHE_KEY = 'cache';
 const cache = JSON.parse(localStorage.getItem(CACHE_KEY || 'null')) || {
@@ -25,7 +26,7 @@ async function cityAutoComplete(txt) {
 		const locations = data.map(location => ({
 			city: location.LocalizedName,
 			country: location.Country.LocalizedName,
-			key: location.Key,
+			id: location.Key,
 		}));
 		cache[cacheKey][txt] = locations;
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
@@ -35,11 +36,11 @@ async function cityAutoComplete(txt) {
 		throw new Error('Failed to get data please try again later');
 	}
 }
-async function curWeather(cityKey) {
+async function curWeather(cityId) {
 	const cacheKey = 'curWeather';
 	const baseUrl = 'http://dataservice.accuweather.com/currentconditions/v1/';
-	const query = cityKey + '?apikey=' + API_KEY;
-	if (cache[cacheKey][cityKey]) return cache[cacheKey][cityKey];
+	const query = cityId + '?apikey=' + API_KEY;
+	if (cache[cacheKey][cityId]) return cache[cacheKey][cityId];
 	try {
 		const { data } = await axios.get(baseUrl + query);
 		const {
@@ -58,7 +59,7 @@ async function curWeather(cityKey) {
 				f: farenheitValue,
 			},
 		};
-		cache[cacheKey][cityKey] = curCondition;
+		cache[cacheKey][cityId] = curCondition;
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
 		return curCondition;
 	} catch (err) {
@@ -66,14 +67,14 @@ async function curWeather(cityKey) {
 		throw new Error('Failed to get data please try again later');
 	}
 }
-async function fiveDayWeatherForecast(cityKey) {
+async function fiveDayWeatherForecast(cityId) {
 	const cacheKey = 'fiveDayWeatherForecast';
 	const baseUrl = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/';
-	const query = cityKey + '?apikey=' + API_KEY;
-	if (cache[cacheKey][cityKey]) return cache[cacheKey][cityKey];
+	const query = cityId + '?apikey=' + API_KEY;
+	if (cache[cacheKey][cityId]) return cache[cacheKey][cityId];
 	try {
 		const { data } = await axios.get(baseUrl + query);
-		const dailyFrecasts = data.DailyForecasts.map(
+		const dailyForecasts = data.DailyForecasts.map(
 			({ Day, Date: localDate, Night, Temperature }) => ({
 				date: localDate.slice(0, 10),
 				weekDay: utilService.getWeekDay(localDate),
@@ -104,13 +105,36 @@ async function fiveDayWeatherForecast(cityKey) {
 			})
 		);
 
-		cache[cacheKey][cityKey] = dailyFrecasts;
+		cache[cacheKey][cityId] = dailyForecasts;
 		localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
-		return dailyFrecasts;
+		return dailyForecasts;
 	} catch (err) {
 		console.log(err);
 		throw new Error('Failed to get data please try again later');
 	}
+}
+
+async function _getCityByLoc(pos) {
+	const { latitude: lat, longitude: lng } = pos.coords;
+	const baseUrl =
+		'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
+	const query = `?apikey=${API_KEY}&q=${lat}%2c${lng}`;
+	const { data } = await axios.get(baseUrl + query);
+	return {
+		city: data.LocalizedName,
+		country: data.Country.LocalizedName,
+		id: data.Key,
+	};
+}
+
+function getCurLoc() {
+	return new Promise((resolve, reject) => {
+		navigator.geolocation.getCurrentPosition(
+			pos => resolve(_getCityByLoc(pos)),
+			() =>
+				reject(_getCityByLoc({ coords: { latitude: 32.0853, longitude: 34.7818 } }))
+		);
+	}).catch(city => city);
 }
 
 window.weatherService = weatherService;

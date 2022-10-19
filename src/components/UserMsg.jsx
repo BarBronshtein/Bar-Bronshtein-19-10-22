@@ -4,7 +4,7 @@ const UserMsg = () => {
 	const { msg } = useSelector(state => state.UserMsg);
 	return (
 		msg.txt && (
-			<section className={msg.msgType ? `user-msg ${msg.msgType}` : 'user-msg'}>
+			<section className={msg.type ? `user-msg ${msg.type}` : 'user-msg'}>
 				<div className="user-msg-wrapper">{msg.txt}</div>
 			</section>
 		)

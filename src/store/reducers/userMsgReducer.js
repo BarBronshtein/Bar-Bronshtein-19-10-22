@@ -7,7 +7,7 @@ export function userMsgReducer(state = INITIAL_STATE, action) {
 		case 'SET_MSG':
 			return {
 				...state,
-				msg: action.msgType ? { type: action.msgType, txt: action.txt } : {},
+				msg: action.msg,
 			};
 		default:
 			return state;

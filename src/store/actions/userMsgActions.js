@@ -6,3 +6,9 @@ export function setUserMsg(msg) {
 		}, 3000);
 	};
 }
+
+export function clearMsg() {
+	return dispatch => {
+		dispatch({ type: 'SET_MSG' });
+	};
+}
