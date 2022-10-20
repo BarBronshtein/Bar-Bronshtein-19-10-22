@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
 	curCity: null,
 	cities: null,
+	cityOptions: null,
 };
 
 export function weatherReducer(state = INITIAL_STATE, action) {
@@ -14,6 +15,11 @@ export function weatherReducer(state = INITIAL_STATE, action) {
 			return {
 				...state,
 				cities: action.cities,
+			};
+		case 'SET_CITY_OPTIONS':
+			return {
+				...state,
+				cityOptions: action.cities,
 			};
 		case 'ADD_CITY':
 			return {

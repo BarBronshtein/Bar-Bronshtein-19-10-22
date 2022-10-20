@@ -6,6 +6,7 @@ export function getCityOptions(txt) {
 		if (!txt) return;
 		try {
 			const cities = await weatherService.cityAutoComplete(txt);
+			console.log(cities);
 			dispatch({ type: 'SET_CITY_OPTIONS', cities });
 		} catch (err) {
 			console.log(err);
