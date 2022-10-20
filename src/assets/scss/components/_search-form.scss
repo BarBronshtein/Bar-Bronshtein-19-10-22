@@ -1,35 +1,57 @@
 .search-form {
+	position: relative;
 	.input-group {
 		margin-bottom: 0.875rem;
 		position: relative;
-		.signup &::before {
-			content: '*';
-			position: absolute;
-			left: -1rem;
-			color: red;
-			top: 1rem;
-		}
 		& input {
 			width: 100%;
+			background-color: #f4f4f4;
 			padding: 0.85rem 2.5rem;
 			outline: none;
 			font-size: 1rem;
-			border: 1px solid #bdbdbd;
-			border-radius: 0.5rem;
+			border: none;
+			border-top-left-radius: 0.25rem;
+			border-top-right-radius: 0.25rem;
+			box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+			border-bottom: 1px solid #dbdbdb;
 			&:focus {
-				border-color: #2f80ed;
-				outline: 1px solid #2f80ed;
+				border-bottom: 1px solid #2f80ed;
+				// border-color: #2f80ed;
+				// outline: 1px solid #2f80ed;
 			}
 			&::placeholder {
 				color: #828282;
 			}
 		}
+
 		.icon {
 			position: absolute;
 			top: 1rem;
 			left: 1rem;
 			font-size: 1.1rem;
 			color: #828282;
+		}
+		.city-options-modal {
+			border-bottom-left-radius: 0.25rem;
+			border-bottom-right-radius: 0.25rem;
+			padding: 0.5rem 0;
+			box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+		}
+		.option-group {
+			position: relative;
+			padding: 0.25rem 2.5rem;
+			cursor: pointer;
+			&:hover {
+				box-shadow: 0 1px 0 #2f80ed;
+			}
+			padding-bottom: 0.5rem;
+			.title {
+			}
+			.icon {
+				top: 0.25rem;
+				font-size: 1.2rem;
+				left: 0.5rem;
+			}
 		}
 	}
 }

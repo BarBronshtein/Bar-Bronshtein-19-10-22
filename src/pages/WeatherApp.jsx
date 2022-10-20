@@ -11,8 +11,7 @@ const WeatherApp = props => {
 	const onChangeInput = utilService.debounce(getOptions, 300);
 	return (
 		<section className="weather-app">
-			<SearchForm onChangeInput={onChangeInput} />
-			{options && JSON.stringify(options)}
+			<SearchForm onChangeInput={onChangeInput} cityOptions={options} />
 		</section>
 	);
 };
