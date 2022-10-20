@@ -1,9 +1,4 @@
-import {
-	HashRouter as Router,
-	Navigate,
-	Route,
-	Routes,
-} from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './assets/scss/global.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

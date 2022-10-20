@@ -1,0 +1,35 @@
+.search-form {
+	.input-group {
+		margin-bottom: 0.875rem;
+		position: relative;
+		.signup &::before {
+			content: '*';
+			position: absolute;
+			left: -1rem;
+			color: red;
+			top: 1rem;
+		}
+		& input {
+			width: 100%;
+			padding: 0.85rem 2.5rem;
+			outline: none;
+			font-size: 1rem;
+			border: 1px solid #bdbdbd;
+			border-radius: 0.5rem;
+			&:focus {
+				border-color: #2f80ed;
+				outline: 1px solid #2f80ed;
+			}
+			&::placeholder {
+				color: #828282;
+			}
+		}
+		.icon {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			font-size: 1.1rem;
+			color: #828282;
+		}
+	}
+}
