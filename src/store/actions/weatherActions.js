@@ -19,7 +19,6 @@ export function getCityOptions(txt) {
 
 export function setCity(city) {
 	return async dispatch => {
-		dispatch({ type: 'SET_CUR_CITY', city });
 		try {
 			city.curWeather = await weatherService.curWeather(city.id);
 			dispatch({ type: 'SET_CUR_CITY', city });
@@ -35,9 +34,11 @@ export function setCity(city) {
 	};
 }
 
-export async function loadCurLocCity() {
-	const city = await weatherService.getCurLoc();
-	setCity(city);
+export function loadCurLocCity() {
+	return async dispatch => {
+		const city = await weatherService.getCurLoc();
+		dispatch(setCity(city));
+	};
 }
 
 export function loadCities() {

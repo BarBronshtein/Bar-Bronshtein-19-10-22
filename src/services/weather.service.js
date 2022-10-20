@@ -77,19 +77,18 @@ async function fiveDayWeatherForecast(cityId) {
 		const dailyForecasts = data.DailyForecasts.map(
 			({ Day, Date: localDate, Night, Temperature }) => ({
 				date: localDate.slice(0, 10),
-				weekDay: utilService.getWeekDay(localDate),
 				day: {
 					text: Day.IconPhrase,
 					icon: Day.Icon,
 					precipitation: Day.HasPrecipitation
-						? Day.Precipitationintensity + Day.PrecipitationType
+						? Day.Precipitationintensity || '' + Day.PrecipitationType
 						: '',
 				},
 				night: {
 					text: Night.IconPhrase,
 					icon: Night.Icon,
 					precipitation: Night.HasPrecipitation
-						? Night.Precipitationintensity + Night.PrecipitationType
+						? Night.Precipitationintensity || '' + Night.PrecipitationType
 						: '',
 				},
 				temperature: {

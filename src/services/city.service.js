@@ -13,7 +13,7 @@ async function query() {
 }
 
 async function remove(cityId) {
-	return await storageService.remove(STORAGE_KEY, cityId);
+	await storageService.remove(STORAGE_KEY, cityId);
 }
 
 async function add(city) {
