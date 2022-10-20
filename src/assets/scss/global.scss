@@ -10,5 +10,10 @@
 @import 'basics/modals';
 @import 'basics/animations';
 // Pages
-
+@import 'pages/favorites';
+@import 'pages/weather-app';
 // Components
+@import 'components/header';
+@import 'components/search-form';
+@import 'components/user-msg';
+@import 'components/weather-card';

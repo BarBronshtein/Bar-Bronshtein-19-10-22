@@ -18,6 +18,12 @@ export function getCityOptions(txt) {
 	};
 }
 
+export function resetCityOptions() {
+	return dispatch => {
+		dispatch({ type: 'SET_CITY_OPTIONS' });
+	};
+}
+
 export function setCity(city) {
 	return async dispatch => {
 		try {

@@ -6,6 +6,7 @@ const UserMsg = () => {
 		msg.txt && (
 			<section className={msg.type ? `user-msg ${msg.type}` : 'user-msg'}>
 				<div className="user-msg-wrapper">{msg.txt}</div>
+				{/* <button className="btn">Close</button> */}
 			</section>
 		)
 	);

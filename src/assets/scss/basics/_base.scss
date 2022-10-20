@@ -16,6 +16,10 @@ body {
 	min-height: 100vh;
 }
 
+a {
+	text-decoration: none;
+}
+
 // MAC like scrollbar
 ::-webkit-scrollbar {
 	width: 8px;

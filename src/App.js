@@ -27,7 +27,7 @@ function App() {
 		<Router>
 			<div className="main-app">
 				<Header />
-				<main className="main-layout">
+				<main className="container">
 					<Routes>
 						<Route exect path="/" element={<WeatherApp curCity={curCity} />} />
 						<Route path="/favorites" element={<Favorites />} />

@@ -1,0 +1,7 @@
+.app-header {
+	.main-nav {
+		> :first-child {
+			margin-inline-end: 1rem;
+		}
+	}
+}
