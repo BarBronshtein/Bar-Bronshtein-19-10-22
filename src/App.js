@@ -29,8 +29,9 @@ function App() {
 				<Header />
 				<main className="main-layout">
 					<Routes>
-						<Route path="/" element={<WeatherApp />} />
+						<Route exect path="/" element={<WeatherApp />} />
 						<Route path="/favorites" element={<Favorites />} />
+						{/* <Route path="*" element={<NotFound />} /> */}
 					</Routes>
 				</main>
 			</div>
