@@ -41,12 +41,11 @@
 			position: relative;
 			padding: 0.25rem 2.5rem;
 			cursor: pointer;
+			padding-bottom: 0.5rem;
 			&:hover {
 				box-shadow: 0 1px 0 #2f80ed;
 			}
-			padding-bottom: 0.5rem;
-			.title {
-			}
+
 			.icon {
 				top: 0.25rem;
 				font-size: 1.2rem;

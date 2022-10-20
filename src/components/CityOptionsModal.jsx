@@ -1,5 +1,5 @@
 import React from 'react';
-import CityOption from './';
+import CityOption from './CityOption';
 const CityOptionsModal = ({ cityOptions, isOpen }) => {
 	if (!cityOptions || !isOpen) return '';
 	return (
