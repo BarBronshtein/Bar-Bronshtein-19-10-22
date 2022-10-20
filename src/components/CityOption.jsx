@@ -1,8 +1,8 @@
 import React from 'react';
 import { GiModernCity } from 'react-icons/gi';
-const CityModalOption = ({ location }) => {
+const CityOption = ({ location }) => {
 	return (
-		<div className="option-group">
+		<div className="city-option">
 			<p className="title">
 				{location.city}, {location.country}
 			</p>
@@ -11,4 +11,4 @@ const CityModalOption = ({ location }) => {
 	);
 };
 
-export default CityModalOption;
+export default CityOption;
