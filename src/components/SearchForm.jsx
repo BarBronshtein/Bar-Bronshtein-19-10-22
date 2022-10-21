@@ -6,8 +6,9 @@ import { useDispatch } from 'react-redux';
 import { setCity } from '../store/actions/weatherActions';
 const SearchForm = props => {
 	const dispatch = useDispatch();
-	const [register] = useFormRegister({ txt: '' }, props.onChangeInput);
 	const [isOpen, setIsOpen] = useState(false);
+
+	const [register] = useFormRegister({ txt: '' }, props.onChangeInput);
 
 	const resetInputField = () =>
 		register('txt').onChange({ target: { name: 'txt', value: '' } });
@@ -16,6 +17,7 @@ const SearchForm = props => {
 		dispatch(setCity(city));
 		resetInputField();
 	};
+
 	return (
 		<form className="search-form flex auto-center">
 			<section

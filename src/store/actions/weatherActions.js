@@ -64,16 +64,18 @@ export function loadCities() {
 
 export function addCity() {
 	return async (dispatch, getState) => {
-		const city = getState().city;
+		const { curCity } = getState().weatherModule;
 		const newCity = await cityService.add({
-			id: city.id,
-			name: city.name,
-			curWeather: city.curWeather,
+			id: curCity.id,
+			name: curCity.name,
+			curWeather: curCity.curWeather,
 		});
-		dispatch({ type: 'REMOVE_CITY', newCity });
+		curCity.isFavorite = true;
+		dispatch({ type: 'ADD_CITY', newCity });
+		dispatch({ type: 'SET_CUR_CITY', city: curCity });
 		dispatch({
 			type: 'SET_MSG',
-			msg: { type: 'success', txt: 'Added ' + city + ' to favorites' },
+			msg: { type: 'success', txt: 'Added ' + curCity + ' to favorites' },
 		});
 	};
 }
@@ -81,12 +83,17 @@ export function addCity() {
 export function removeCity(cityId) {
 	return async (dispatch, getState) => {
 		try {
-			const cityName = getState().city.name;
+			const { curCity } = getState().weatherModule;
 			const city = await cityService.remove(cityId);
 			dispatch({ type: 'REMOVE_CITY', city });
+			curCity.isFavorite = false;
+			dispatch({ type: 'SET_CUR_CITY', city: curCity });
 			dispatch({
 				type: 'SET_MSG',
-				msg: { type: 'success', txt: 'Removed ' + cityName + ' from favorites' },
+				msg: {
+					type: 'success',
+					txt: 'Removed ' + curCity.name + ' from favorites',
+				},
 			});
 		} catch (err) {
 			console.log(err);

@@ -3,21 +3,22 @@ import { useSelector } from 'react-redux';
 import { utilService } from '../services/util.service';
 const WeatherCard = ({ forecast }) => {
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
-	let temp = (
+
+	let temp = isCelcius ? (
 		<div className="temperature">
-			<span>Min {forecast.temperature.c.min}&#8451; | </span>
-			<span>Max {forecast.temperature.c.max}&#8451;</span>
+			<span>
+				Min {forecast.temperature.c.min.toString().slice(0, 2)}&#8451; |{' '}
+			</span>
+			<span>Max {forecast.temperature.c.max.toString().slice(0, 2)}&#8451;</span>
+		</div>
+	) : (
+		<div className="temperature">
+			<span>
+				Min {forecast.temperature.f.min.toString().slice(0, 2)}&#8457; |{' '}
+			</span>
+			<span>Max {forecast.temperature.f.max.toString().slice(0, 2)}&#8457;</span>
 		</div>
 	);
-
-	if (!isCelcius) {
-		temp = (
-			<div className="temperature">
-				<span>Min {forecast.temperature.f.min}&#8457; | </span>
-				<span>Max {forecast.temperature.f.max}&#8457;</span>
-			</div>
-		);
-	}
 
 	return (
 		<article className="weather-card">
