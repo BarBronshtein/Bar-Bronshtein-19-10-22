@@ -2,6 +2,7 @@ const INITIAL_STATE = {
 	curCity: null,
 	cities: null,
 	cityOptions: null,
+	isCelcius: false,
 };
 
 export function weatherReducer(state = INITIAL_STATE, action) {

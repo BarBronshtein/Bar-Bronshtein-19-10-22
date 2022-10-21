@@ -1,13 +1,14 @@
 import React from 'react';
-import { WeatherCard } from './weatherCard';
-const weatherCardList = ({ forecasts, Card }) => {
+import WeatherCard from './WeatherCard';
+const WeatherCardList = ({ forecasts }) => {
+	if (!forecasts) return <div className="loading">loading...</div>;
 	return (
 		<section className="weather-card-list">
 			{forecasts.map(forecast => (
-				<WeatherCard key={forecast.city} cmp={<Card forecast={forecast} />} />
+				<WeatherCard key={forecast.date} forecast={forecast} />
 			))}
 		</section>
 	);
 };
 
-export default weatherCardList;
+export default WeatherCardList;

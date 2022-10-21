@@ -28,16 +28,15 @@ export function setCity(city) {
 		try {
 			dispatch(resetCityOptions());
 			city.curWeather = await weatherService.curWeather(city.id);
-			dispatch({ type: 'SET_CUR_CITY', city });
 			city.dailyForecasts = await weatherService.fiveDayWeatherForecast(city.id);
-
 			// Checks if location is already on favorites
 			const { cities } = getState().weatherModule;
 			if (cities && cities.length > 0) {
 				const idx = cities.findIndex(favoriteCity => city.id === favoriteCity.id);
 				if (!idx !== -1) city.isFavorite = true;
 			}
-
+			city.name = city.city;
+			delete city.city;
 			dispatch({ type: 'SET_CUR_CITY', city });
 		} catch (err) {
 			console.log(err);

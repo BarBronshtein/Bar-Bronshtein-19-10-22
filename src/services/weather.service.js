@@ -80,16 +80,10 @@ async function fiveDayWeatherForecast(cityId) {
 				day: {
 					text: Day.IconPhrase,
 					icon: Day.Icon,
-					precipitation: Day.HasPrecipitation
-						? Day.Precipitationintensity || '' + Day.PrecipitationType
-						: '',
 				},
 				night: {
 					text: Night.IconPhrase,
 					icon: Night.Icon,
-					precipitation: Night.HasPrecipitation
-						? Night.Precipitationintensity || '' + Night.PrecipitationType
-						: '',
 				},
 				temperature: {
 					c: {

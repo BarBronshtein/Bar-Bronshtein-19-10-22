@@ -67,8 +67,8 @@ function makeId(length = 5) {
 }
 
 function getWeekDay(date) {
-	const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'sat'];
-	const newDate = date instanceof Date ? date : new Date(+date);
+	const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+	const newDate = date instanceof Date ? date : new Date(date);
 	return weekDays[newDate.getDay()];
 }
 
