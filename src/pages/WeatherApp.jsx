@@ -5,19 +5,21 @@ import {
 	getCityOptions,
 	addCity,
 	removeCity,
-	toggleCelcius,
+	setCeclius,
+	setFarenheit,
 } from '../store/actions/weatherActions';
 import SearchForm from '../components/SearchForm';
 import WeatherCardList from '../components/WeatherCardList';
 import { AiFillHeart } from 'react-icons/ai';
 const WeatherApp = ({ curCity }) => {
 	const dispatch = useDispatch();
-
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
 	const options = useSelector(state => state.weatherModule.cityOptions);
-	const onToggleIsCelcius = () => dispatch(toggleCelcius());
 	const getOptions = ({ txt }) => dispatch(getCityOptions(txt));
 	const onChangeInput = utilService.debounce(getOptions, 300);
+
+	const onSetCelcius = () => dispatch(setCeclius());
+	const onSetFarenheit = () => dispatch(setFarenheit());
 
 	const onToggleCity = () =>
 		curCity.isFavorite ? dispatch(removeCity(curCity.id)) : dispatch(addCity());
@@ -39,8 +41,8 @@ const WeatherApp = ({ curCity }) => {
 							<div className="description">
 								<h2>{curCity.name}</h2>
 								<p>
-									<span onClick={onToggleIsCelcius}>&#8451; | </span>
-									<span onClick={onToggleIsCelcius}>&#8457;</span>
+									<span onClick={onSetCelcius}>&#8451; | </span>
+									<span onClick={onSetFarenheit}>&#8457;</span>
 								</p>
 								<p>{showTemperature}</p>
 							</div>
