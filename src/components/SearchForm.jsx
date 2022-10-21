@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useFormRegister } from '../customHooks/useFormRegister.js';
 import { BiSearch } from 'react-icons/bi';
 import CityOptionsModal from './CityOptionsModal.jsx';
+import { useDispatch } from 'react-redux';
+import { setCity } from '../store/actions/weatherActions';
 const SearchForm = props => {
+	const dispatch = useDispatch();
 	const [register] = useFormRegister({ txt: '' }, props.onChangeInput);
 	const [isOpen, setIsOpen] = useState(false);
-	const disptach = useDispatch();
+
+	const resetInputField = () =>
+		register('txt').onChange({ target: { name: 'txt', value: '' } });
+
+	const onOptionClick = city => {
+		dispatch(setCity(city));
+		resetInputField();
+	};
 	return (
-		<form onSubmit={props.formSubmit} className="search-form flex auto-center">
+		<form className="search-form flex auto-center">
 			<section
 				onFocus={() => setIsOpen(true)}
-				onBlur={() => setIsOpen(false)}
+				onBlur={() => setTimeout(() => setIsOpen(false), 90)}
 				className="input-group"
 			>
-				<input type="text" {...register('txt')} placeholder="Enter a city name" />
+				<input
+					type="text"
+					autoComplete="off"
+					{...register('txt')}
+					placeholder="Enter a city name"
+				/>
 				<BiSearch className="input-group icon" />
-				<CityOptionsModal isOpen={isOpen} cityOptions={props.cityOptions} />
+				<CityOptionsModal
+					isOpen={isOpen}
+					onOptionClick={onOptionClick}
+					cityOptions={props.cityOptions}
+				/>
 			</section>
 			{/* TODO: Create modal cmp with the autocomplete options */}
 		</form>

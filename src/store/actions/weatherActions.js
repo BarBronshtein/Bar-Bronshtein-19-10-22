@@ -6,7 +6,6 @@ export function getCityOptions(txt) {
 		if (!txt) return;
 		try {
 			const cities = await weatherService.cityAutoComplete(txt);
-			console.log(cities);
 			dispatch({ type: 'SET_CITY_OPTIONS', cities });
 		} catch (err) {
 			console.log(err);
@@ -20,16 +19,25 @@ export function getCityOptions(txt) {
 
 export function resetCityOptions() {
 	return dispatch => {
-		dispatch({ type: 'SET_CITY_OPTIONS' });
+		dispatch({ type: 'SET_CITY_OPTIONS', cities: null });
 	};
 }
 
 export function setCity(city) {
-	return async dispatch => {
+	return async (dispatch, getState) => {
 		try {
+			dispatch(resetCityOptions());
 			city.curWeather = await weatherService.curWeather(city.id);
 			dispatch({ type: 'SET_CUR_CITY', city });
 			city.dailyForecasts = await weatherService.fiveDayWeatherForecast(city.id);
+
+			// Checks if location is already on favorites
+			const { cities } = getState().weatherModule;
+			if (cities && cities.length > 0) {
+				const idx = cities.findIndex(favoriteCity => city.id === favoriteCity.id);
+				if (!idx !== -1) city.isFavorite = true;
+			}
+
 			dispatch({ type: 'SET_CUR_CITY', city });
 		} catch (err) {
 			console.log(err);
@@ -70,6 +78,7 @@ export function addCity() {
 		});
 	};
 }
+
 export function removeCity(cityId) {
 	return async (dispatch, getState) => {
 		try {

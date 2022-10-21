@@ -1,4 +1,7 @@
 .app-header {
+	.logo {
+		text-transform: capitalize;
+	}
 	.main-nav {
 		> :first-child {
 			margin-inline-end: 1rem;

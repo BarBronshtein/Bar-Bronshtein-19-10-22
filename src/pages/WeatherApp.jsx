@@ -7,8 +7,10 @@ const WeatherApp = props => {
 	// const dis
 	const dispatch = useDispatch();
 	const options = useSelector(state => state.weatherModule.cityOptions);
-	const getOptions = ev => dispatch(getCityOptions(ev?.txt));
+
+	const getOptions = ({ txt }) => dispatch(getCityOptions(txt));
 	const onChangeInput = utilService.debounce(getOptions, 300);
+
 	return (
 		<section className="weather-app">
 			<SearchForm onChangeInput={onChangeInput} cityOptions={options} />
