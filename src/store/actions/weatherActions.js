@@ -104,3 +104,10 @@ export function removeCity(cityId) {
 		}
 	};
 }
+
+export function toggleCelcius() {
+	return (dispatch, getState) => {
+		const { isCelcius } = getState().weatherModule;
+		dispatch({ type: 'SET_IS_CELCIUS', isCelcius: !isCelcius });
+	};
+}

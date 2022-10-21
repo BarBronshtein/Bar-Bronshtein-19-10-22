@@ -5,6 +5,7 @@ import {
 	getCityOptions,
 	addCity,
 	removeCity,
+	toggleCelcius,
 } from '../store/actions/weatherActions';
 import SearchForm from '../components/SearchForm';
 import WeatherCardList from '../components/WeatherCardList';
@@ -14,7 +15,7 @@ const WeatherApp = ({ curCity }) => {
 
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
 	const options = useSelector(state => state.weatherModule.cityOptions);
-
+	const onToggleIsCelcius = () => dispatch(toggleCelcius());
 	const getOptions = ({ txt }) => dispatch(getCityOptions(txt));
 	const onChangeInput = utilService.debounce(getOptions, 300);
 
@@ -38,8 +39,8 @@ const WeatherApp = ({ curCity }) => {
 							<div className="description">
 								<h2>{curCity.name}</h2>
 								<p>
-									<span>&#8451; | </span>
-									<span>&#8457;</span>
+									<span onClick={onToggleIsCelcius}>&#8451; | </span>
+									<span onClick={onToggleIsCelcius}>&#8457;</span>
 								</p>
 								<p>{showTemperature}</p>
 							</div>

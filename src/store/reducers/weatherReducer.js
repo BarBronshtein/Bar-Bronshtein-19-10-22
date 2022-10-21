@@ -32,6 +32,11 @@ export function weatherReducer(state = INITIAL_STATE, action) {
 				...state,
 				cities: state.cities.filter(city => city.id !== action.cityId),
 			};
+		case 'SET_IS_CELCIUS':
+			return {
+				...state,
+				isCelcius: action.isCelcius,
+			};
 		default:
 			return state;
 	}
