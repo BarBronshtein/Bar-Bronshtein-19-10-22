@@ -1,4 +1,30 @@
 .weather-card {
 	border-radius: 0.25rem;
 	color: $primary-color;
+	background: $card-background;
+	text-align: center;
+	&-wrapper {
+		color: $primary-color;
+		padding: 0.5rem;
+		.left {
+			float: left;
+			margin-inline-end: 0.5rem;
+			padding: 1rem;
+		}
+		.right {
+			padding: 1rem;
+			float: right;
+		}
+		.right,
+		.left {
+			max-width: 130px;
+			.img-container {
+				margin: 1rem 0;
+			}
+		}
+	}
+}
+
+.clear {
+	clear: both;
 }

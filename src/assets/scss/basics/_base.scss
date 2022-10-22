@@ -14,12 +14,14 @@ body {
 	--primary-color: #{$dark-color};
 	--primary-background: #{$light-color};
 	background: $light-background;
+	--card-background: #{$light-card-background};
 }
 
 body.dark {
 	--primary-color: #{$light-color};
 	--primary-background: #{$dark-color};
 	background: $dark-background;
+	--card-background: #{$dark-card-background};
 }
 
 .main-app {
