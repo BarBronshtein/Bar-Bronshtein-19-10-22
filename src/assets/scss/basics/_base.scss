@@ -11,6 +11,15 @@ html {
 body {
 	min-height: 100vh;
 	font-family: 'Arial';
+	--primary-color: #{$dark-color};
+	--primary-background: #{$light-color};
+	background: $light-background;
+}
+
+body.dark {
+	--primary-color: #{$light-color};
+	--primary-background: #{$dark-color};
+	background: $dark-background;
 }
 
 .main-app {

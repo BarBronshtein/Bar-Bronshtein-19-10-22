@@ -4,9 +4,19 @@ $clr2: #293241;
 $clr3: #5c3fc5;
 $clr4: #696969;
 $clr5: #e6e9ec;
+$dark-color: #333;
+$light-color: #fff;
+$dark-background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+$light-background: linear-gradient(
+	to right,
+	#f78ca0 0%,
+	#f9748f 19%,
+	#fd868c 60%,
+	#fe9a8b 100%
+);
 
-$navHeight: 80px;
-
+$primary-color: var(--primary-color);
+$primary-background: var(--primary-background);
 // Breakpoints
 $mobile-breakpoint: 600px;
 $tablet-breakpoint: 768px;

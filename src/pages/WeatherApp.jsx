@@ -11,6 +11,7 @@ import {
 import SearchForm from '../components/SearchForm';
 import WeatherCardList from '../components/WeatherCardList';
 import { AiFillHeart } from 'react-icons/ai';
+import { weatherIconService } from '../services/weather-icon.service';
 const WeatherApp = ({ curCity }) => {
 	const dispatch = useDispatch();
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
@@ -37,7 +38,9 @@ const WeatherApp = ({ curCity }) => {
 				<div className="weather-app-wrapper">
 					<div className="top flex space-between align-center">
 						<div className="left flex align-center">
-							<div className="img-container">{curCity.curWeather.icon}</div>
+							<div className="img-container">
+								<img src={weatherIconService(curCity.curWeather.icon)} alt="" />
+							</div>
 							<div className="description">
 								<h2>{curCity.name}</h2>
 								<p>

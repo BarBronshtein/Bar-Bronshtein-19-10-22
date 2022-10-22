@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { utilService } from '../services/util.service';
+import { weatherIconService } from '../services/weather-icon.service';
 const WeatherCard = ({ forecast }) => {
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
 
@@ -25,10 +26,15 @@ const WeatherCard = ({ forecast }) => {
 			<h3 className="day capitalaize">{utilService.getWeekDay(forecast.date)}</h3>
 			<h4>Day</h4>
 			<p>{forecast.day.text}</p>
-			<p>{forecast.day.icon}</p>
+			<div className="img-container">
+				<img src={weatherIconService(forecast.day.icon)} alt="" />
+			</div>
+			{/* <p>{forecast.day.icon}</p> */}
 			<h4>Night</h4>
 			<p>{forecast.night.text}</p>
-			<p>{forecast.night.icon}</p>
+			<div className="img-container">
+				<img src={weatherIconService(forecast.night.icon)} alt="" />
+			</div>
 			{temp}
 		</article>
 	);
