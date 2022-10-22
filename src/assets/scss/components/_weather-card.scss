@@ -3,7 +3,11 @@
 	color: $primary-color;
 	background: $card-background;
 	text-align: center;
+	min-width: 350px;
 	&-wrapper {
+		h3 {
+			margin: 0.25rem 0;
+		}
 		color: $primary-color;
 		padding: 0.5rem;
 		.left {
@@ -17,10 +21,20 @@
 		}
 		.right,
 		.left {
-			max-width: 130px;
 			.img-container {
 				margin: 1rem 0;
 			}
+			h4 {
+				margin-bottom: 0.5rem;
+			}
+			p {
+				margin-bottom: 0.25rem;
+				max-width: 130px;
+				margin: auto;
+			}
+		}
+		.temperature {
+			margin-bottom: 0.5rem;
 		}
 	}
 }

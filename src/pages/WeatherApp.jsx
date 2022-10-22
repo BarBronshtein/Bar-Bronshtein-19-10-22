@@ -51,7 +51,11 @@ const WeatherApp = ({ curCity }) => {
 							</div>
 						</div>
 						<div className="right">
-							<AiFillHeart className="icon" onClick={onToggleCity} />
+							<AiFillHeart
+								color={curCity.isFavorite ? 'red' : 'grey'}
+								className="icon"
+								onClick={onToggleCity}
+							/>
 						</div>
 					</div>
 					<h2 className="weather-description flex auto-center">

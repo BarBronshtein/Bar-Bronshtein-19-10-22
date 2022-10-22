@@ -3,6 +3,16 @@
 	.logo {
 		text-transform: capitalize;
 	}
+
+	.theme {
+		font-size: 1.5rem;
+		> :first-child {
+			margin-inline-end: 2rem;
+		}
+		> * {
+			cursor: pointer;
+		}
+	}
 	.main-nav {
 		> :first-child {
 			margin-inline-end: 1rem;

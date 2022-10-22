@@ -1,0 +1,13 @@
+.favorite-card {
+	background: $card-background;
+	text-align: center;
+	padding: 2rem;
+	> * {
+		margin-bottom: 1rem;
+	}
+	img {
+		max-width: 5rem;
+		margin: auto;
+		margin-bottom: 1rem;
+	}
+}
