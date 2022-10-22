@@ -10,8 +10,8 @@ import Favorites from './pages/Favorites';
 import UserMsg from './components/UserMsg';
 function App() {
 	const dispatch = useDispatch();
-	const curCity = useSelector(state => state.weatherModule.curCity);
-
+	const { curCity } = useSelector(state => state.weatherModule);
+	const { cities } = useSelector(state => state.weatherModule);
 	useEffect(() => {
 		dispatch(loadCurLocCity());
 		dispatch(loadCities());
@@ -26,7 +26,7 @@ function App() {
 				<main className="container">
 					<Routes>
 						<Route exect path="/" element={<WeatherApp curCity={curCity} />} />
-						<Route path="/favorites" element={<Favorites />} />
+						<Route path="/favorites" element={<Favorites cities={cities} />} />
 						{/* <Route path="*" element={<NotFound />} /> */}
 					</Routes>
 				</main>
