@@ -1,5 +1,9 @@
 .city-options-modal {
-	z-index: 100;
+	position: fixed;
+	z-index: 15;
+	max-width: 350px;
+
+	background-color: #fff;
 	border-bottom-left-radius: 0.25rem;
 	border-bottom-right-radius: 0.25rem;
 	padding: 0.5rem 0 0 0;

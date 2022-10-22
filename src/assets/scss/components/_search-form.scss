@@ -5,6 +5,8 @@
 		position: relative;
 		& input {
 			width: 100%;
+			max-width: 350px;
+			min-width: 350px;
 			background-color: #f4f4f4;
 			padding: 0.85rem 2.5rem;
 			outline: none;
