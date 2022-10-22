@@ -1,12 +1,7 @@
 .not-found {
-	--clr-1: #333;
-	--clr-2: #4f4f4f;
-	--clr-3: #fff;
-	--clr-4: #bdbdbd;
-
 	main {
 		font-family: 'Space Mono';
-		color: var(--clr-1);
+		color: $primary-color;
 		min-height: 100vh;
 	}
 
@@ -16,6 +11,7 @@
 
 	.uppercase {
 		text-transform: uppercase;
+		color: $primary-color;
 	}
 	/* Layout */
 	.main-layout {
@@ -56,11 +52,12 @@
 		font-size: 3rem;
 		letter-spacing: -0.145rem;
 		line-height: 4.375rem;
+		color: $primary-color;
 	}
 
 	.main-content .description p {
 		margin-top: 1.875rem;
-		color: var(--clr-2);
+		color: $primary-color;
 		letter-spacing: -0.035em;
 		font-weight: 400;
 		list-style: none;
@@ -69,8 +66,10 @@
 	}
 
 	.main-content .description .action-btn {
-		background-color: var(--clr-1);
-		color: var(--clr-3);
+		background-color: $primary-color;
+		a {
+			color: $card-background;
+		}
 		font-weight: 700;
 		font-size: 0.875rem;
 		line-height: 1.3125rem;
@@ -91,7 +90,7 @@
 		text-align: center;
 		font-weight: 500;
 		font-family: 'Montserrat';
-		color: var(--clr-4);
+		color: $primary-color;
 	}
 
 	@media screen and (min-width: 540px) {

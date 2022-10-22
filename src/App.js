@@ -8,6 +8,8 @@ import Header from './components/Header';
 import WeatherApp from './pages/WeatherApp';
 import Favorites from './pages/Favorites';
 import UserMsg from './components/UserMsg';
+import NotFound from './pages/NotFound';
+import Loader from './components/Loader';
 function App() {
 	const dispatch = useDispatch();
 	const { curCity } = useSelector(state => state.weatherModule);
@@ -21,7 +23,7 @@ function App() {
 	if (!curCity)
 		return (
 			<div className="loading">
-				Loading...
+				<Loader />
 				<UserMsg />
 			</div>
 		);
@@ -33,7 +35,7 @@ function App() {
 					<Routes>
 						<Route exect path="/" element={<WeatherApp curCity={curCity} />} />
 						<Route path="/favorites" element={<Favorites cities={cities} />} />
-						{/* <Route path="*" element={<NotFound />} /> */}
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</main>
 				<UserMsg />
