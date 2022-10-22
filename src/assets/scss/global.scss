@@ -1,3 +1,5 @@
+// Space Mono font-family
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 // Setup
 @import 'setup/variables';
 @import 'setup/typography';
@@ -12,6 +14,7 @@
 // Pages
 @import 'pages/favorites';
 @import 'pages/weather-app';
+@import 'pages/not-found';
 // Components
 @import 'components/header';
 @import 'components/search-form';

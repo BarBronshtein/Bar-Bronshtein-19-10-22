@@ -1,0 +1,152 @@
+.not-found {
+	--clr-1: #333;
+	--clr-2: #4f4f4f;
+	--clr-3: #fff;
+	--clr-4: #bdbdbd;
+
+	main {
+		font-family: 'Space Mono';
+		color: var(--clr-1);
+		min-height: 100vh;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	.uppercase {
+		text-transform: uppercase;
+	}
+	/* Layout */
+	.main-layout {
+		max-width: 1680px;
+		margin: auto;
+		display: grid;
+		grid-template-columns: 1fr 325px 1fr;
+	}
+
+	.main-layout > * {
+		grid-column: 2;
+	}
+
+	/* Header */
+	.main-header {
+		padding: 1.25rem 0;
+		margin-bottom: 2.75rem;
+	}
+
+	.main-header h3 {
+		font-family: 'Inconsolata';
+		font-weight: 700;
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+		letter-spacing: -0.08rem;
+	}
+
+	/* Main content */
+	.main-content img {
+		padding: 0 1.25rem;
+	}
+
+	.main-content .description {
+		margin-top: 3.75rem;
+	}
+
+	.main-content .description h2 {
+		font-size: 3rem;
+		letter-spacing: -0.145rem;
+		line-height: 4.375rem;
+	}
+
+	.main-content .description p {
+		margin-top: 1.875rem;
+		color: var(--clr-2);
+		letter-spacing: -0.035em;
+		font-weight: 400;
+		list-style: none;
+		line-height: 1.6875rem;
+		font-size: 1.125rem;
+	}
+
+	.main-content .description .action-btn {
+		background-color: var(--clr-1);
+		color: var(--clr-3);
+		font-weight: 700;
+		font-size: 0.875rem;
+		line-height: 1.3125rem;
+		letter-spacing: -0.035rem;
+		padding: 1.5625rem 2.8125rem;
+		margin-top: 4.125rem;
+	}
+
+	/* Footer */
+	.main-footer {
+		margin-top: 7.1875rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.main-footer p {
+		font-size: 0.875rem;
+		line-height: 1.0625rem;
+		text-align: center;
+		font-weight: 500;
+		font-family: 'Montserrat';
+		color: var(--clr-4);
+	}
+
+	@media screen and (min-width: 540px) {
+		.main-layout {
+			grid-template-columns: 5rem 1fr 5rem;
+		}
+	}
+
+	@media screen and (min-width: 990px) {
+		.main-content {
+			display: flex;
+		}
+		.main-content > * {
+			flex: 1;
+		}
+		.main-content img {
+			max-height: 500px;
+		}
+		.main-content .description {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0;
+			margin-inline-start: 4rem;
+		}
+		.main-content .description h2 {
+			font-size: 3.5rem;
+			list-style: none;
+			line-height: 6rem;
+			margin-bottom: 2.25rem;
+			max-width: 600px;
+		}
+		.main-content .description p {
+			line-height: 2.25rem;
+			font-size: 1.5rem;
+			max-width: 400px;
+		}
+		.main-content .description .action-btn {
+			max-width: max-content;
+		}
+	}
+	@media screen and (min-width: 1280px) {
+		.main-content .description {
+			margin-inline-start: 6rem;
+		}
+		.main-content .description h2 {
+			font-size: 4rem;
+		}
+	}
+
+	@media screen and (min-height: 1180px) {
+		.main-footer {
+			position: fixed;
+			bottom: 1.5rem;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
