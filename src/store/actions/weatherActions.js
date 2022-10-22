@@ -31,9 +31,11 @@ export function setCity(city) {
 			city.dailyForecasts = await weatherService.fiveDayWeatherForecast(city.id);
 			// Checks if location is already on favorites
 			const { cities } = getState().weatherModule;
+			city.isFavorite = false;
 			if (cities && cities.length > 0) {
 				const idx = cities.findIndex(favoriteCity => city.id === favoriteCity.id);
-				if (!idx !== -1) city.isFavorite = true;
+				if (idx !== -1) city.isFavorite = true;
+				else city.isFavorite = false;
 			}
 			city.name = city.city;
 			delete city.city;
@@ -75,7 +77,7 @@ export function addCity() {
 		dispatch({ type: 'SET_CUR_CITY', city: curCity });
 		dispatch({
 			type: 'SET_MSG',
-			msg: { type: 'success', txt: 'Added ' + curCity + ' to favorites' },
+			msg: { type: 'success', txt: 'Added ' + curCity.name + ' to favorites' },
 		});
 	};
 }

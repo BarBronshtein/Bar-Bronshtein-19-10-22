@@ -7,6 +7,7 @@ import { loadCities } from './store/actions/weatherActions';
 import Header from './components/Header';
 import WeatherApp from './pages/WeatherApp';
 import Favorites from './pages/Favorites';
+import UserMsg from './components/UserMsg';
 function App() {
 	const dispatch = useDispatch();
 	const curCity = useSelector(state => state.weatherModule.curCity);
@@ -29,6 +30,7 @@ function App() {
 						{/* <Route path="*" element={<NotFound />} /> */}
 					</Routes>
 				</main>
+				<UserMsg />
 			</div>
 		</Router>
 	);

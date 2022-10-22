@@ -19,7 +19,7 @@ async function cityAutoComplete(txt) {
 	const cacheKey = 'locations';
 	const baseUrl =
 		'http://dataservice.accuweather.com/locations/v1/cities/autocomplete';
-	const query = `?apikey=${API_KEY}&q=` + txt;
+	const query = `?apikey=${API_KEY}&q=${txt}`;
 	try {
 		if (cache[cacheKey][txt]) return cache[cacheKey][txt];
 		const { data } = await axios.get(baseUrl + query);
