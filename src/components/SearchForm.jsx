@@ -19,7 +19,10 @@ const SearchForm = props => {
 	};
 
 	return (
-		<form className="search-form flex auto-center">
+		<form
+			onSubmit={ev => ev.preventDefault()}
+			className="search-form flex auto-center"
+		>
 			<section
 				onFocus={() => setIsOpen(true)}
 				onBlur={() => setTimeout(() => setIsOpen(false), 90)}

@@ -4,7 +4,7 @@ const CityOption = ({ location, onOptionClick }) => {
 	return (
 		<div onClick={onOptionClick.bind(null, location)} className="city-option">
 			<p className="title">
-				{location.city}, {location.country}
+				{location.name}, {location.country}
 			</p>
 			<GiModernCity className="icon" />
 		</div>

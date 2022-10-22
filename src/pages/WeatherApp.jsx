@@ -25,11 +25,9 @@ const WeatherApp = ({ curCity }) => {
 	const onToggleCity = () =>
 		curCity.isFavorite ? dispatch(removeCity(curCity.id)) : dispatch(addCity());
 
-	const showTemperature = isCelcius ? (
-		<span>{curCity.curWeather.temperature.c.toString().slice(0, 2)}&#8451;</span>
-	) : (
-		<span>{curCity.curWeather.temperature.f.toString().slice(0, 2)}&#8457;</span>
-	);
+	const showTemperature = isCelcius
+		? curCity.curWeather.temperature.c.toString().slice(0, 2) + '℃'
+		: curCity.curWeather.temperature.f.toString().slice(0, 2) + '℉';
 
 	return (
 		<section className="weather-app">
@@ -44,7 +42,7 @@ const WeatherApp = ({ curCity }) => {
 							<div className="description">
 								<h2>{curCity.name}</h2>
 								<p>
-									<span onClick={onSetCelcius}>&#8451; | </span>
+									<span onClick={onSetCelcius}>&#8451;</span> |{' '}
 									<span onClick={onSetFarenheit}>&#8457;</span>
 								</p>
 								<p>{showTemperature}</p>

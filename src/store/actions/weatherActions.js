@@ -1,4 +1,5 @@
 import { cityService } from '../../services/city.service';
+import { mockService } from '../../services/mock.service';
 import { weatherService } from '../../services/weather.service';
 
 export function getCityOptions(txt) {
@@ -37,8 +38,6 @@ export function setCity(city) {
 				if (idx !== -1) city.isFavorite = true;
 				else city.isFavorite = false;
 			}
-			city.name = city.city;
-			delete city.city;
 			dispatch({ type: 'SET_CUR_CITY', city });
 		} catch (err) {
 			console.log(err);
@@ -46,6 +45,8 @@ export function setCity(city) {
 				type: 'SET_MSG',
 				msg: { type: 'error', txt: 'Failed to get data' },
 			});
+			const mockCity = mockService.getMockCity();
+			dispatch({ type: 'SET_CUR_CITY', city: mockCity });
 		}
 	};
 }

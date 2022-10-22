@@ -12,6 +12,14 @@
 				font-size: 2rem;
 				cursor: pointer;
 			}
+			.description {
+				> * {
+					margin-bottom: 0.25rem;
+				}
+				p > * {
+					cursor: pointer;
+				}
+			}
 		}
 		.weather-description {
 			margin-bottom: 3rem;

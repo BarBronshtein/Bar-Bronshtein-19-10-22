@@ -18,7 +18,13 @@ function App() {
 	}, []);
 
 	// TODO: Create a loading component
-	if (!curCity) return <div className="loading">Loading...</div>;
+	if (!curCity)
+		return (
+			<div className="loading">
+				Loading...
+				<UserMsg />
+			</div>
+		);
 	return (
 		<Router>
 			<div className="main-app">

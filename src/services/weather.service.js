@@ -9,14 +9,14 @@ export const weatherService = {
 };
 const CACHE_KEY = 'cache';
 const cache = JSON.parse(localStorage.getItem(CACHE_KEY || 'null')) || {
-	locations: {},
+	locationsOptions: {},
 	curWeather: {},
 	fiveDayWeatherForecast: {},
 };
 const API_KEY = process.env.REACT_APP_ACUWEATHER_API_KEY;
 
 async function cityAutoComplete(txt) {
-	const cacheKey = 'locations';
+	const cacheKey = 'locationsOptions';
 	const baseUrl =
 		'http://dataservice.accuweather.com/locations/v1/cities/autocomplete';
 	const query = `?apikey=${API_KEY}&q=${txt}`;
@@ -24,7 +24,7 @@ async function cityAutoComplete(txt) {
 		if (cache[cacheKey][txt]) return cache[cacheKey][txt];
 		const { data } = await axios.get(baseUrl + query);
 		const locations = data.map(location => ({
-			city: location.LocalizedName,
+			name: location.LocalizedName,
 			country: location.Country.LocalizedName,
 			id: location.Key,
 		}));
@@ -112,12 +112,21 @@ async function _getCityByLoc(pos) {
 	const baseUrl =
 		'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
 	const query = `?apikey=${API_KEY}&q=${lat}%2c${lng}`;
-	const { data } = await axios.get(baseUrl + query);
-	return {
-		city: data.LocalizedName,
-		country: data.Country.LocalizedName,
-		id: data.Key,
-	};
+	try {
+		const { data } = await axios.get(baseUrl + query);
+		return {
+			name: data.LocalizedName,
+			country: data.Country.LocalizedName,
+			id: data.Key,
+		};
+	} catch (err) {
+		console.log(err);
+		return {
+			name: 'Tel Aviv',
+			country: 'Israel',
+			id: 215854,
+		};
+	}
 }
 
 function getCurLoc() {
