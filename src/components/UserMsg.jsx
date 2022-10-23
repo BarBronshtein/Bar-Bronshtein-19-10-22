@@ -6,16 +6,14 @@ const UserMsg = () => {
 	const onClearMsg = () => dispatch(clearMsg());
 	if (msg) setTimeout(onClearMsg, 3000);
 	return (
-		msg?.txt && (
-			<section className={msg.type ? `user-msg ${msg.type}` : 'user-msg'}>
-				<div className="user-msg-wrapper">
-					<span>{msg.txt}</span>
-					<button className="btn user-msg-btn" onClick={onClearMsg}>
-						Close
-					</button>
-				</div>
-			</section>
-		)
+		<section className={msg?.type ? `user-msg ${msg.type}` : 'user-msg'}>
+			<div className="user-msg-wrapper flex column">
+				<span>{msg?.txt}</span>
+				<button className="btn user-msg-btn" onClick={onClearMsg}>
+					Close
+				</button>
+			</div>
+		</section>
 	);
 };
 
