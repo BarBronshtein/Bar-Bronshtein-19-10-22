@@ -3,6 +3,7 @@
 	text-align: center;
 	padding: 2rem;
 	min-width: 250px;
+	cursor: pointer;
 	> * {
 		margin-bottom: 1rem;
 	}
@@ -10,5 +11,18 @@
 		max-width: 5rem;
 		margin: auto;
 		margin-bottom: 1rem;
+	}
+}
+
+@media screen and (max-width: 580px) {
+	.favorite-card {
+		min-width: 0;
+		padding: 3rem;
+	}
+}
+@media screen and (max-width: 460px) {
+	.favorite-card {
+		width: 100%;
+		padding: 2rem;
 	}
 }

@@ -3,7 +3,7 @@ import { useFormRegister } from '../customHooks/useFormRegister.js';
 import { BiSearch } from 'react-icons/bi';
 import CityOptionsModal from './CityOptionsModal.jsx';
 import { useDispatch } from 'react-redux';
-import { setCity } from '../store/actions/weatherActions';
+import { resetCurCity, setCity } from '../store/actions/weatherActions';
 const SearchForm = props => {
 	const dispatch = useDispatch();
 	const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +14,7 @@ const SearchForm = props => {
 		register('txt').onChange({ target: { name: 'txt', value: '' } });
 
 	const onOptionClick = city => {
+		dispatch(resetCurCity());
 		dispatch(setCity(city));
 		resetInputField();
 	};

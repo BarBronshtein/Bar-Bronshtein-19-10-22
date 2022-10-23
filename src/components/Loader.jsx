@@ -25,7 +25,8 @@ const loadingCircleVariants = {
 };
 const loadingCircleTransition = {
 	duration: 0.4,
-	yoyo: Infinity,
+	repeatType: 'reverse',
+	repeat: Infinity,
 	ease: 'easeInOut',
 };
 
@@ -42,7 +43,8 @@ const Loader = (props = '') => {
 		display: 'block',
 		width: props.smallWidth || '1rem',
 		height: props.smallHeight || '1rem',
-		background: props.color || '#333',
+		background:
+			props.color || document.body.classList.contains('dark') ? '#fff' : '#333',
 		borderRadius: '0.5rem',
 	};
 

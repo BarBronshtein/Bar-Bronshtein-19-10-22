@@ -6,7 +6,7 @@ const CityOptionsModal = ({ cityOptions, isOpen, onOptionClick }) => {
 	if (!cityOptions)
 		return (
 			<section className="city-options-modal modal">
-				<Loader />
+				<Loader smallHeight={'0.75rem'} smallWidth={'0.75rem'} />
 			</section>
 		);
 	return (

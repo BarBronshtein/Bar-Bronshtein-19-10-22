@@ -7,6 +7,7 @@ import {
 	removeCity,
 	setCeclius,
 	setFarenheit,
+	resetCityOptions,
 } from '../store/actions/weatherActions';
 import SearchForm from '../components/SearchForm';
 import WeatherCardList from '../components/WeatherCardList';
@@ -16,7 +17,10 @@ const WeatherApp = ({ curCity }) => {
 	const dispatch = useDispatch();
 	const isCelcius = useSelector(state => state.weatherModule.isCelcius);
 	const options = useSelector(state => state.weatherModule.cityOptions);
-	const getOptions = ({ txt }) => dispatch(getCityOptions(txt));
+	const getOptions = ({ txt }) => {
+		dispatch(resetCityOptions());
+		dispatch(getCityOptions(txt));
+	};
 	const onChangeInput = utilService.debounce(getOptions, 300);
 
 	const onSetCelcius = () => dispatch(setCeclius());

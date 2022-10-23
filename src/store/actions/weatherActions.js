@@ -18,6 +18,10 @@ export function getCityOptions(txt) {
 	};
 }
 
+export function resetCurCity() {
+	return dispatch => dispatch({ type: 'SET_CUR_CITY', city: null });
+}
+
 export function resetCityOptions() {
 	return dispatch => {
 		dispatch({ type: 'SET_CITY_OPTIONS', cities: null });
