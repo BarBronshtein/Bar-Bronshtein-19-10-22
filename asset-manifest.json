@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Bar-Bronshtein-19-10-22/static/css/main.13bb864b.css",
+    "main.js": "/Bar-Bronshtein-19-10-22/static/js/main.f79ba10a.js",
+    "static/js/787.d9312eb8.chunk.js": "/Bar-Bronshtein-19-10-22/static/js/787.d9312eb8.chunk.js",
+    "static/media/Scarecrow.png": "/Bar-Bronshtein-19-10-22/static/media/Scarecrow.633430866163f4a7e8f2.png",
+    "index.html": "/Bar-Bronshtein-19-10-22/index.html",
+    "main.13bb864b.css.map": "/Bar-Bronshtein-19-10-22/static/css/main.13bb864b.css.map",
+    "main.f79ba10a.js.map": "/Bar-Bronshtein-19-10-22/static/js/main.f79ba10a.js.map",
+    "787.d9312eb8.chunk.js.map": "/Bar-Bronshtein-19-10-22/static/js/787.d9312eb8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13bb864b.css",
+    "static/js/main.f79ba10a.js"
+  ]
+}
