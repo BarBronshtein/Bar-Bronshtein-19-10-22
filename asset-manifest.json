@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Bar-Bronshtein-19-10-22/static/css/main.6ed17812.css",
-    "main.js": "/Bar-Bronshtein-19-10-22/static/js/main.1c4cce47.js",
+    "main.css": "/Bar-Bronshtein-19-10-22/static/css/main.3480de52.css",
+    "main.js": "/Bar-Bronshtein-19-10-22/static/js/main.7a910beb.js",
     "static/js/787.d9312eb8.chunk.js": "/Bar-Bronshtein-19-10-22/static/js/787.d9312eb8.chunk.js",
     "static/media/Scarecrow.png": "/Bar-Bronshtein-19-10-22/static/media/Scarecrow.633430866163f4a7e8f2.png",
     "index.html": "/Bar-Bronshtein-19-10-22/index.html",
-    "main.6ed17812.css.map": "/Bar-Bronshtein-19-10-22/static/css/main.6ed17812.css.map",
-    "main.1c4cce47.js.map": "/Bar-Bronshtein-19-10-22/static/js/main.1c4cce47.js.map",
+    "main.3480de52.css.map": "/Bar-Bronshtein-19-10-22/static/css/main.3480de52.css.map",
+    "main.7a910beb.js.map": "/Bar-Bronshtein-19-10-22/static/js/main.7a910beb.js.map",
     "787.d9312eb8.chunk.js.map": "/Bar-Bronshtein-19-10-22/static/js/787.d9312eb8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ed17812.css",
-    "static/js/main.1c4cce47.js"
+    "static/css/main.3480de52.css",
+    "static/js/main.7a910beb.js"
   ]
 }
