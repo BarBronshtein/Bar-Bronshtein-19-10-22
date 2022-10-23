@@ -14,8 +14,14 @@ $light-background: linear-gradient(
 	#fd868c 60%,
 	#fe9a8b 100%
 );
-$light-card-background: #fd868cfc;
-$dark-card-background: #0f4c5c;
+$light-card-background: linear-gradient(
+	to right,
+	#fe9a8b 0%,
+	#fd868c 45%,
+	#f9748f 65%,
+	#f78ca0 100%
+);
+$dark-card-background: #485563;
 $primary-color: var(--primary-color);
 $primary-background: var(--primary-background);
 $card-background: var(--card-background);
