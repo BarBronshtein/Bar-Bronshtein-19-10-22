@@ -91,8 +91,8 @@ export function removeCity(cityId) {
 	return async (dispatch, getState) => {
 		try {
 			const { curCity } = getState().weatherModule;
-			const city = await cityService.remove(cityId);
-			dispatch({ type: 'REMOVE_CITY', city });
+			await cityService.remove(cityId);
+			dispatch({ type: 'REMOVE_CITY', cityId });
 			curCity.isFavorite = false;
 			dispatch({ type: 'SET_CUR_CITY', city: curCity });
 			dispatch({
